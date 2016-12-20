@@ -12,7 +12,7 @@ public class massiv {
 
 //      Вывод среднего значения
         double m = averageValue(a);
-        System.out.println("\n" + "Average Value " + m);
+        System.out.println("\n Average Value " + m);
 
 //      Вывод минимума и максимума массива
         int b[] = minmax(a);
