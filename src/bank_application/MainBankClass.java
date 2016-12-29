@@ -33,6 +33,6 @@ public class MainBankClass {
         ca.withdraw(323);
         System.out.println(ca.getBalance());
 
-        System.out.println(Gender.Male);
+//        System.out.println(Gender.Male);
     }
 }

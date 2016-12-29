@@ -11,7 +11,7 @@ public class NewBank {
     private ArrayList<Client> clientNames = new ArrayList<>();
 
 
-    public void newClient() {
+    public void newClient(Client client) {
         clientNames.add(client);
     }
 

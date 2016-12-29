@@ -22,7 +22,6 @@ public class usedeposit {
 
         for (int j = 0; j < 3; j++){
             System.out.println(bank.getMoney(year)[j]);
-
         }
     }
 
