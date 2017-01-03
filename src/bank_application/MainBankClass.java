@@ -14,7 +14,7 @@ public class MainBankClass {
         Client tanya = new Client("Tanya", Gender.Female);
         Client azik = new Client("Azik", Gender.Male);
 
-        SavingAccount sa = new SavingAccount(1000);
+        SavingAccount sa = new SavingAccount(1010);
         CheckingAccount ca = new CheckingAccount(500, 200);
         gena.newAccount(sa);
         gena.newAccount(ca);
