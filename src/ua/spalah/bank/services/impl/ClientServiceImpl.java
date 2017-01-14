@@ -1,5 +1,7 @@
 package ua.spalah.bank.services.impl;
 
+import ua.spalah.bank.Exceptions.ClientAlreadyExistsException;
+import ua.spalah.bank.Exceptions.ClientNotFoundException;
 import ua.spalah.bank.models.Account;
 import ua.spalah.bank.models.Bank;
 import ua.spalah.bank.models.Client;
@@ -11,7 +13,7 @@ public class ClientServiceImpl implements ClientService {
 
 
     @Override
-    public Client findClientByName(Bank bank, String name) {
+    public Client findClientByName(Bank bank, String name) throws ClientNotFoundException {
         for (Client client : bank.getClients()) {
             if (client.getName().equalsIgnoreCase(name)) {
                 return client;
@@ -27,14 +29,13 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client saveClient(Bank bank, Client client) {
+    public Client saveClient(Bank bank, Client client) throws ClientAlreadyExistsException {
         if (!bank.getClients().contains(client)) {
             bank.getClients().add(client);
             return client;
         } else {
             throw new ClientAlreadyExistsException(client.getName());
         }
-        return null;
     }
 
     @Override
@@ -50,7 +51,8 @@ public class ClientServiceImpl implements ClientService {
         }
         return totalBalance;
     }
-    public void addAccount (Client client, Account account){
+
+    public void addAccount(Client client, Account account) {
         if (client.getAccounts().size() == 0) {
             client.setActiveAccount(account);
         }

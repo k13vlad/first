@@ -19,7 +19,7 @@ public class AccountServiceImpl implements AccountService {
         }
     }
 
-    public void withdraw(Account account, double amount) {
+    public void withdraw(Account account, double amount) throws NotEnoughMoneyException {
 
         if (amount <= 0) throw new IllegalArgumentException("You want to add no money!");
 
@@ -47,8 +47,7 @@ public class AccountServiceImpl implements AccountService {
         }
     }
 
-
-    public void transfer(Account fromAccount, Account toAccount, double amount) {
+    public void transfer(Account fromAccount, Account toAccount, double amount) throws NotEnoughMoneyException {
         withdraw(fromAccount, amount);
         deposit(toAccount, amount);
     }
