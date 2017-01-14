@@ -1,4 +1,6 @@
-package bank_application;
+package ua.spalah.bank.models;
+
+import ua.spalah.bank.Gender;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -16,7 +18,20 @@ public class Client {
         this.gender = gender;
     }
 
+    public Account getActiveAccount() {
+        return activeAccount;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public void setActiveAccount(Account activeAccount) {
+        this.activeAccount = activeAccount;
+    }
+
     public void newAccount(Account account) {
+
         if (accounts.size() == 0) {
             activeAccount = account;
         }
@@ -32,13 +47,6 @@ public class Client {
         return gender;
     }
 
-    public void setActiveAccount(Account account) {
-        if (accounts.contains(account)) {
-            activeAccount = account;
-        } else {
-            System.out.println("Haven't created account");
-        }
-    }
 
     public double getTotalBalance() {
         double totalBalance = 0;
@@ -65,6 +73,10 @@ public class Client {
     @Override
     public int hashCode() {
         return Objects.hash(name, gender);
+    }
+
+    public ArrayList<Account> getAccounts() {
+        return accounts;
     }
 }
 
