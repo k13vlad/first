@@ -24,7 +24,7 @@ public class AccountServiceImpl implements AccountService {
         if (amount <= 0) throw new IllegalArgumentException("You want to add no money!");
 
         switch (account.getAccountType()) {
-            case Saving: {
+            case SAVING: {
                 double balance = account.getBalance();
                 if (balance >= amount) {
                     account.setBalance(account.getBalance() - amount);
@@ -33,7 +33,7 @@ public class AccountServiceImpl implements AccountService {
                 }
                 break;
             }
-            case Checking: {
+            case CHECKING: {
                 double available = account.getBalance() + ((CheckingAccount) account).getOverdraft();
                 if (available >= amount) {
                     account.setBalance(available - amount);

@@ -41,7 +41,7 @@ public class BankReportServiceImpl implements BankReportService {
         double creditSum = 0;
         for (Client client : bank.getClients()) {
             for (Account account : client.getAccounts()) {
-                if (account.getAccountType().equals(AccountType.Checking)) {
+                if (account.getAccountType().equals(AccountType.CHECKING)) {
                     CheckingAccount checkingAccount = (CheckingAccount) account;
                     creditSum += checkingAccount.getOverdraft();
                 }
@@ -49,6 +49,19 @@ public class BankReportServiceImpl implements BankReportService {
         }
         return creditSum;
     }
+
+//    public double getBankCreditSum(Bank bank) {
+//        double creditSum = 0;
+//
+//        for (Client client : bank.getClients()) {
+//            for (Account account : client.getAccounts()){
+//                if (account.getBalance() < 0){
+//                    creditSum += account.getBalance();
+//                }
+//            }
+//        }
+//        return creditsSum;
+//    }
 
     @Override
     public List<Client> getClientsSortedByName(Bank bank) {
