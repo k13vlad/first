@@ -17,7 +17,7 @@ private final BankReportService bankReportService;
                 "Number of accounts: " + bankReportService.getNumberOfAccounts(BankCommander.currentBank) + "\n" +
                 "Total account sum: " + bankReportService.getTotalAccountSum(BankCommander.currentBank) + "\n" +
                 "Bank credit sum: " + bankReportService.getBankCreditSum(BankCommander.currentBank) + "\n" +
-                "Clients sorted by name: " + bankReportService.getClientsSortedByName(BankCommander.currentBank));
+                "Clients sorted by name: " + bankReportService.getClientsSortedByName(BankCommander.currentBank) + "\n");
     }
 
     @Override
