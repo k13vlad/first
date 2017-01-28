@@ -17,5 +17,5 @@ public interface ClientService {
 
     void deleteClient(Bank bank, Client client);
 
-    void addAccount(Client client, Account account)
+    void addAccount(Client client, Account account);
 }

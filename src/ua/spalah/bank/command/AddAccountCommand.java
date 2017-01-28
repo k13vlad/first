@@ -53,7 +53,7 @@ public class AddAccountCommand implements Command {
                     BankCommander.currentClient.setActiveAccount(account);
                 } else {
                     System.out.println("Do you want to do this account active? \n If yes, enter: 1 \n No, enter: 2");
-                    if ((in.nextInt() == 1) {
+                    if ((in.nextInt() == 1)) {
                         BankCommander.currentClient.setActiveAccount(account);
                     }
                 }
