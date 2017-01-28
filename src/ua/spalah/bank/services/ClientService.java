@@ -2,6 +2,7 @@ package ua.spalah.bank.services;
 
 import ua.spalah.bank.Exceptions.ClientAlreadyExistsException;
 import ua.spalah.bank.Exceptions.ClientNotFoundException;
+import ua.spalah.bank.models.Account;
 import ua.spalah.bank.models.Bank;
 import ua.spalah.bank.models.Client;
 
@@ -15,4 +16,6 @@ public interface ClientService {
     Client saveClient(Bank bank, Client client) throws ClientAlreadyExistsException;
 
     void deleteClient(Bank bank, Client client);
+
+    void addAccount(Client client, Account account)
 }
