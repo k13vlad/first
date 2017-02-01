@@ -11,11 +11,51 @@ public class Client {
     private Gender gender;
     private Account activeAccount;
     private ArrayList<Account> accounts = new ArrayList<>();
+    private String email;
+    private String tel;
+    private String city;
 
-
-    public Client(String name, Gender gender) {
+    public Client(String name, Gender gender, String email, String tel, String city) {
         this.name = name;
         this.gender = gender;
+        this.email = email;
+        this.tel = tel;
+        this.city = city;
+    }
+
+
+
+
+//    public Client() {
+//        this.name = name;
+//        this.gender = gender;
+//        this.email = email;
+//        this.tel = tel;
+//        this.city = city;
+//    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public Account getActiveAccount() {
@@ -58,7 +98,14 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client[" + name + " gender = " + gender + ", \n activeAccount = " + activeAccount + ",\n accounts = " + accounts + "]";
+        return "Client[" +
+                "name: " + name +
+                ", gender: " + gender + "\n" +
+                "activeAccount: " + activeAccount + "\n" +
+                "email: " + email  +
+                ", tel: " + tel  +
+                ", city:" + city  +
+                ']';
     }
 
     @Override

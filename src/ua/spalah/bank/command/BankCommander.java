@@ -7,7 +7,6 @@ import ua.spalah.bank.Gender;
 import ua.spalah.bank.models.Bank;
 import ua.spalah.bank.models.Client;
 import ua.spalah.bank.services.AccountService;
-import ua.spalah.bank.services.AccountType;
 import ua.spalah.bank.services.BankReportService;
 import ua.spalah.bank.services.ClientService;
 import ua.spalah.bank.services.impl.AccountServiceImpl;
@@ -41,10 +40,12 @@ public class BankCommander {
             BankReportService bankReportService = new BankReportServiceImpl();
             Bank bank = new Bank();
 
-            Client victor = new Client("Victor", Gender.Male);
-            Client amelia = new Client("Amelia", Gender.Female);
-            Client olivia = new Client("Olivia", Gender.Female);
-            Client anthony = new Client("Anthony", Gender.Male);
+            Client victor = new Client("Victor", Gender.Male, "victor22@gmail.com", "+380786541235", "Bern");
+            Client amelia = new Client("Amelia", Gender.Female, "amelia11@gmail.com", "+380916547821", "Vienna");
+            Client olivia = new Client("Olivia", Gender.Female, "olivia92@gmail.com", "+385213548465", "London");
+            Client anthony = new Client("Anthony", Gender.Male, "anthony44@gmail.com", "+381256489524", "LA");
+
+
 
             SavingAccount vs = new SavingAccount(10000);
             CheckingAccount vc = new CheckingAccount(5000, 1000);
