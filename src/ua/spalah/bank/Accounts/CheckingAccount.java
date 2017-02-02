@@ -1,6 +1,6 @@
 package ua.spalah.bank.Accounts;
 
-
+//1
 import ua.spalah.bank.services.AccountType;
 
 public class CheckingAccount extends SavingAccount {
