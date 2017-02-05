@@ -23,7 +23,9 @@ public class AddClientCommand implements Command {
         String name = in.nextLine();
         System.out.println("Choose client's gender. Enter '1' if Male, '2' if Female");
         Gender gender = null;
-        int genderInt = in.nextInt();
+        String gender1 = in.nextLine();
+        int genderInt = Integer.parseInt(gender1);
+
         if (genderInt == 1) {
             gender = Gender.Male;
         } else {
@@ -32,7 +34,7 @@ public class AddClientCommand implements Command {
         System.out.println("Enter user's e-mail");
         String email = in.nextLine();
 
-        while (!isCorrectEmail(email)){
+        while (!isCorrectEmail(email)) {
             System.out.println("E-mail is incorrect.");
             System.out.println("Enter correct user's email.");
             email = in.nextLine();
@@ -42,7 +44,7 @@ public class AddClientCommand implements Command {
         System.out.println("Enter user's phone number");
         String tel = in.nextLine();
 
-        while (!isCorrectTel(tel)){
+        while (!isCorrectTel(tel)) {
             System.out.println("Client's phone number is incorrect.");
             System.out.println("Enter the correct number.");
             tel = in.nextLine();
