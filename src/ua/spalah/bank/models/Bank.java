@@ -1,22 +1,16 @@
 package ua.spalah.bank.models;
 
-import ua.spalah.bank.listeners.ClientRegistrationListener;
-
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Bank {
 
-        private List<Client> clients = new ArrayList<>();
 
-        public List<Client> getClients() {
-            return clients;
-        }
+    private Map<String, Client> clients = new HashMap<>();
 
-        public void setClients(List<Client> clients) {
-            this.clients = clients;
-        }
-
-
+    public Map<String, Client> getClients() {
+        return clients;
+    }
 }

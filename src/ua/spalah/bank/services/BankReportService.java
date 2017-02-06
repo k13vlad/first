@@ -4,6 +4,7 @@ import ua.spalah.bank.models.Bank;
 import ua.spalah.bank.models.Client;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BankReportService {
     int getNumberOfClients(Bank bank); // общее количество клиентов
@@ -15,4 +16,6 @@ public interface BankReportService {
     double getBankCreditSum(Bank bank); // возвращает сумму отрицательных балансов по всем счетам
 
     List<Client> getClientsSortedByName(Bank bank); // Возвращает список клиентов отсортированных по имени
+
+    Map<String, List<Client>> getClientsByCity(Bank bank);//Возвращает клиентов сгруппированных потгороду
 }

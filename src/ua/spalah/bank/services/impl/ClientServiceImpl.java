@@ -7,31 +7,29 @@ import ua.spalah.bank.models.Bank;
 import ua.spalah.bank.models.Client;
 import ua.spalah.bank.services.ClientService;
 
-import java.util.List;
+import java.util.Map;
 
 public class ClientServiceImpl implements ClientService {
 
 
     @Override
     public Client findClientByName(Bank bank, String name) throws ClientNotFoundException {
-        for (Client client : bank.getClients()) {
-            if (client.getName().equalsIgnoreCase(name)) {
-                return client;
-            }
+        Client client = bank.getClients().get(name);
+        if (client.getName().equalsIgnoreCase(name)) {
+            return client;
         }
         return null;
     }
 
     @Override
-    public List<Client> findAllClients(Bank bank) {
-        List<Client> allClients = bank.getClients();
-        return allClients;
+    public Map<String, Client> findAllClients(Bank bank) {
+        return bank.getClients();
     }
 
     @Override
     public Client saveClient(Bank bank, Client client) throws ClientAlreadyExistsException {
-        if (!bank.getClients().contains(client)) {
-            bank.getClients().add(client);
+        if (!bank.getClients().containsKey(client.getName())) {
+            bank.getClients().put(client.getName(), client);
             return client;
         } else {
             throw new ClientAlreadyExistsException(client.getName());
@@ -39,8 +37,12 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void deleteClient(Bank bank, Client client) {
-        bank.getClients().remove(client);
+    public void deleteClient(Bank bank, Client client) throws ClientNotFoundException {
+        if (bank.getClients().containsKey(client.getName())) {
+            bank.getClients().remove(client.getName());
+        } else {
+            throw new ClientNotFoundException(client.getName());
+        }
     }
 
 
@@ -53,6 +55,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     public void addAccount(Client client, Account account) {
+        client.getAccounts().add(account);
         if (client.getAccounts().size() == 0) {
             client.setActiveAccount(account);
         }

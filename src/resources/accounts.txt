@@ -1,0 +1,8 @@
+victor::SAVING::10000
+victor::CHECKING::5000::1000
+amelia::SAVING::7000
+amelia::CHECKING::5000::2000
+olivia::SAVING::4000
+olivia::CHECKING::3000::700
+anthony::SAVING::15000
+anthony::CHECKING::10000::10000
