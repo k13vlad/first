@@ -132,7 +132,7 @@ public class BankCommander {
     }
 
     // запуск нашего приложения
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         BankCommander bankCommander = new BankCommander();
         bankCommander.run();
     }
