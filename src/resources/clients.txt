@@ -1,4 +1,0 @@
-Victor::Male::victor22@gmail.com::+380786541235::Bern
-Amelia::Female::amelia11@gmail.com::+380916547821::Vienna
-Olivia::Female::olivia92@gmail.com::+385213548465::London
-Anthony::Male::anthony44@gmail.com::+381256489524::LA

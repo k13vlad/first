@@ -1,5 +1,5 @@
 package ua.spalah.bank.Sockets;
-import ua.spalah.bank.command.*;
+
 import ua.spalah.bank.command.BankCommander;
 
 import java.io.DataInputStream;
@@ -14,7 +14,7 @@ public class Server {
 
     public static void main(String[] args) {
         int port = 1313; // случайный порт (может быть любое число от 1025 до 65535)
-
+        BankCommander bankCommander = new BankCommander();
 
 
         try {
@@ -37,6 +37,8 @@ public class Server {
 
 
             String line;
+
+
             while (true) {
                 line = in.readUTF(); // ожидаем пока клиент пришлет строку текста.
                 System.out.println("The client just sent me this line : " + line);
