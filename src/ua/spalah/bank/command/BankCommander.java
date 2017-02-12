@@ -1,9 +1,12 @@
 package ua.spalah.bank.command;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import ua.spalah.bank.Accounts.CheckingAccount;
 import ua.spalah.bank.Accounts.SavingAccount;
 import ua.spalah.bank.Exceptions.ClientAlreadyExistsException;
 import ua.spalah.bank.Gender;
+import ua.spalah.bank.IO.IO;
+import ua.spalah.bank.IO.SocketIO;
 import ua.spalah.bank.models.Bank;
 import ua.spalah.bank.models.Client;
 import ua.spalah.bank.services.AccountService;
@@ -21,13 +24,21 @@ public class BankCommander {
 
     // хранит в себе клиента с которым мы работаем в данный момент
     public static Client currentClient;
+    protected IO io;
 
     // Список команд которые мы можем выполнять
-    private Command[] commands;
+    protected Command[] commands;
 
-    public BankCommander() {
+    public BankCommander(IO io) {
+        this.io = io;
         init();
     }
+
+    public BankCommander(SocketIO socketIO) {
+
+        init();
+    }
+
 
     private void init() {
         // здесь проводим инициализацию банка начальными данными
@@ -44,7 +55,6 @@ public class BankCommander {
             Client amelia = new Client("Amelia", Gender.Female, "amelia11@gmail.com", "+380916547821", "Vienna");
             Client olivia = new Client("Olivia", Gender.Female, "olivia92@gmail.com", "+385213548465", "London");
             Client anthony = new Client("Anthony", Gender.Male, "anthony44@gmail.com", "+381256489524", "LA");
-
 
 
             SavingAccount vs = new SavingAccount(10000);
@@ -132,8 +142,8 @@ public class BankCommander {
     }
 
     // запуск нашего приложения
-    public static void main(String[] args) throws Exception {
-        BankCommander bankCommander = new BankCommander();
-        bankCommander.run();
-    }
+//    public static void main(String[] args) throws Exception {
+//        BankCommander bankCommander = new BankCommander();
+//        bankCommander.run();
+//    }
 }

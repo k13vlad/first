@@ -13,8 +13,8 @@ public class Server {
 
 
     public static void main(String[] args) {
-        int port = 1313; // случайный порт (может быть любое число от 1025 до 65535)
-        BankCommander bankCommander = new BankCommander();
+        int port = 1314; // случайный порт (может быть любое число от 1025 до 65535)
+
 
 
         try {
