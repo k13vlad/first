@@ -3,6 +3,7 @@ package ua.spalah.bank.models;
 import ua.spalah.bank.Gender;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Client {
@@ -10,29 +11,25 @@ public class Client {
     private String name;
     private Gender gender;
     private Account activeAccount;
-    private ArrayList<Account> accounts = new ArrayList<>();
+    private List<Account> accounts = new ArrayList<>();
     private String email;
     private String tel;
     private String city;
+    private long id;
 
-    public Client(String name, Gender gender, String email, String tel, String city) {
+    public Client(String name, Gender gender, Account activeAccount, ArrayList<Account> accounts, String email, String tel, String city, long id) {
         this.name = name;
         this.gender = gender;
+        this.activeAccount = activeAccount;
+        this.accounts = accounts;
         this.email = email;
         this.tel = tel;
         this.city = city;
+        this.id = id;
     }
 
-
-
-
-//    public Client() {
-//        this.name = name;
-//        this.gender = gender;
-//        this.email = email;
-//        this.tel = tel;
-//        this.city = city;
-//    }
+    public Client(long id, String name, Gender gender, String email, String tel, String city) {
+    }
 
     public String getEmail() {
         return email;
@@ -102,9 +99,9 @@ public class Client {
                 "name: " + name +
                 ", gender: " + gender + "\n" +
                 "activeAccount: " + activeAccount + "\n" +
-                "email: " + email  +
-                ", tel: " + tel  +
-                ", city:" + city  +
+                "email: " + email +
+                ", tel: " + tel +
+                ", city:" + city +
                 ']';
     }
 
@@ -122,8 +119,21 @@ public class Client {
         return Objects.hash(name, gender);
     }
 
-    public ArrayList<Account> getAccounts() {
+    public List<Account> getAccounts() {
         return accounts;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
 }
 

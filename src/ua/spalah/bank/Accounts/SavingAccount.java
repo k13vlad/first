@@ -6,6 +6,7 @@ import ua.spalah.bank.services.AccountType;
 public class SavingAccount implements Account {
     private double balance;
     private final AccountType accountType;
+    private long id;
 
     public SavingAccount(double balance, AccountType accountType) {
         this.balance = balance;
@@ -30,6 +31,17 @@ public class SavingAccount implements Account {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
+    @Override
+    public long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(long id) {
+        this.id = id;
+    }
+
 
     @Override
     public String toString() {

@@ -1,13 +1,13 @@
 package ua.spalah.bank.command;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
+
 import ua.spalah.bank.Accounts.CheckingAccount;
 import ua.spalah.bank.Accounts.SavingAccount;
 import ua.spalah.bank.Exceptions.ClientAlreadyExistsException;
 import ua.spalah.bank.Gender;
 import ua.spalah.bank.IO.IO;
 import ua.spalah.bank.IO.SocketIO;
-import ua.spalah.bank.models.Bank;
 import ua.spalah.bank.models.Client;
 import ua.spalah.bank.services.AccountService;
 import ua.spalah.bank.services.BankReportService;
@@ -16,14 +16,16 @@ import ua.spalah.bank.services.impl.AccountServiceImpl;
 import ua.spalah.bank.services.impl.BankReportServiceImpl;
 import ua.spalah.bank.services.impl.ClientServiceImpl;
 
+import java.sql.Connection;
 import java.util.Scanner;
 
 public class BankCommander {
     // хранит в себе банк с кототорым мы работаем
-    public static Bank currentBank;
+//    public static Bank currentBank;
 
     // хранит в себе клиента с которым мы работаем в данный момент
     public static Client currentClient;
+    public static Connection connection;
     protected IO io;
 
     // Список команд которые мы можем выполнять
@@ -49,7 +51,7 @@ public class BankCommander {
             ClientService clientService = new ClientServiceImpl();
             AccountService accountService = new AccountServiceImpl();
             BankReportService bankReportService = new BankReportServiceImpl();
-            Bank bank = new Bank();
+//            Bank bank = new Bank();
 
             Client victor = new Client("Victor", Gender.Male, "victor22@gmail.com", "+380786541235", "Bern");
             Client amelia = new Client("Amelia", Gender.Female, "amelia11@gmail.com", "+380916547821", "Vienna");
@@ -69,10 +71,10 @@ public class BankCommander {
             SavingAccount ans = new SavingAccount(15000);
             CheckingAccount anc = new CheckingAccount(10000, 10000);
 
-            clientService.saveClient(bank, victor);
-            clientService.saveClient(bank, amelia);
-            clientService.saveClient(bank, olivia);
-            clientService.saveClient(bank, anthony);
+            clientService.saveClient(victor);
+            clientService.saveClient(amelia);
+            clientService.saveClient(olivia);
+            clientService.saveClient(anthony);
 
             clientService.addAccount(victor, vs);
             clientService.addAccount(victor, vc);
@@ -86,7 +88,7 @@ public class BankCommander {
             clientService.addAccount(anthony, ans);
             clientService.addAccount(anthony, anc);
 
-            currentBank = bank;
+//            currentBank = bank;
 
             this.commands = new Command[]{
                     new FindClientCommand(clientService),
@@ -141,9 +143,5 @@ public class BankCommander {
         }
     }
 
-    // запуск нашего приложения
-//    public static void main(String[] args) throws Exception {
-//        BankCommander bankCommander = new BankCommander();
-//        bankCommander.run();
-//    }
+
 }

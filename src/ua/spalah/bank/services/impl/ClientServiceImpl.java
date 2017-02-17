@@ -13,8 +13,8 @@ public class ClientServiceImpl implements ClientService {
 
 
     @Override
-    public Client findClientByName(Bank bank, String name) throws ClientNotFoundException {
-        Client client = bank.getClients().get(name);
+    public Client findClientByName(String name) throws ClientNotFoundException {
+        Client client = getClients().get(name);
         if (client.getName().equalsIgnoreCase(name)) {
             return client;
         }
@@ -22,14 +22,14 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Map<String, Client> findAllClients(Bank bank) {
-        return bank.getClients();
+    public Map<String, Client> findAllClients() {
+        return getClients();
     }
 
     @Override
-    public Client saveClient(Bank bank, Client client) throws ClientAlreadyExistsException {
-        if (!bank.getClients().containsKey(client.getName())) {
-            bank.getClients().put(client.getName(), client);
+    public Client saveClient(Client client) throws ClientAlreadyExistsException {
+        if (!getClients().containsKey(client.getName())) {
+            getClients().put(client.getName(), client);
             return client;
         } else {
             throw new ClientAlreadyExistsException(client.getName());
@@ -37,14 +37,13 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void deleteClient(Bank bank, Client client) throws ClientNotFoundException {
-        if (bank.getClients().containsKey(client.getName())) {
-            bank.getClients().remove(client.getName());
+    public void deleteClient(Client client) throws ClientNotFoundException {
+        if (getClients().containsKey(client.getName())) {
+            getClients().remove(client.getName());
         } else {
             throw new ClientNotFoundException(client.getName());
         }
     }
-
 
     public double getTotalBalance(Client client) {
         double totalBalance = 0;
@@ -61,4 +60,6 @@ public class ClientServiceImpl implements ClientService {
         }
         client.getAccounts().add(account);
     }
+
+
 }

@@ -3,7 +3,6 @@ package ua.spalah.bank.services.impl;
 import ua.spalah.bank.Accounts.CheckingAccount;
 import ua.spalah.bank.command.BankCommander;
 import ua.spalah.bank.models.Account;
-import ua.spalah.bank.models.Bank;
 import ua.spalah.bank.models.Client;
 import ua.spalah.bank.services.AccountType;
 import ua.spalah.bank.services.BankReportService;
@@ -14,12 +13,12 @@ import java.util.*;
 public class BankReportServiceImpl implements BankReportService {
 
     @Override
-    public int getNumberOfClients(Bank bank) {
+    public int getNumberOfClients() {
         return bank.getClients().size();
     }
 
     @Override
-    public int getNumberOfAccounts(Bank bank) {
+    public int getNumberOfAccounts() {
         int numberOfAccounts = 0;
         for (Client client : bank.getClients().values()) {
             numberOfAccounts += client.getAccounts().size();
@@ -28,7 +27,7 @@ public class BankReportServiceImpl implements BankReportService {
     }
 
     @Override
-    public double getTotalAccountSum(Bank bank) {
+    public double getTotalAccountSum() {
         double totalSum = 0;
         for (Client client : bank.getClients().values()) {
             ClientServiceImpl clientService = new ClientServiceImpl();
@@ -38,7 +37,7 @@ public class BankReportServiceImpl implements BankReportService {
     }
 
 
-    public double getBankCreditSum(Bank bank) {
+    public double getBankCreditSum() {
         double creditSum = 0;
 
         for (Client client : bank.getClients().values()) {
@@ -52,7 +51,7 @@ public class BankReportServiceImpl implements BankReportService {
     }
 
     @Override
-    public List<Client> getClientsSortedByName(Bank bank) {
+    public List<Client> getClientsSortedByName() {
         List<Client> clients = new ArrayList<>(bank.getClients().values());
         Collections.sort(clients, new Comparator<Client>() {
             @Override
@@ -64,7 +63,7 @@ public class BankReportServiceImpl implements BankReportService {
     }
 
     @Override
-    public Map<String, List<Client>> getClientsByCity(Bank bank) {
+    public Map<String, List<Client>> getClientsByCity() {
         Map<String, List<Client>> clients = new HashMap<>();
         for (Client client : BankCommander.currentBank.getClients().values()) {
             if (!clients.containsKey(client.getCity())) {

@@ -9,4 +9,8 @@ public interface Account {
     double getBalance();
 
     void setBalance(double balance);
+
+    long getId();
+
+    void setId(long id);
 }
