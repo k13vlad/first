@@ -2,6 +2,7 @@ package ua.spalah.bank.DAO;
 
 import ua.spalah.bank.models.Account;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 public interface AccountDAO {
@@ -22,4 +23,6 @@ public interface AccountDAO {
     Account findActiveAccountByClientName(String clientName);
 
     void deleteByClientId(long clientId);
+
+    Account getAccount(ResultSet resultSet);
 }

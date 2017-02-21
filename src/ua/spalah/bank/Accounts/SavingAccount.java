@@ -4,17 +4,14 @@ import ua.spalah.bank.models.Account;
 import ua.spalah.bank.services.AccountType;
 
 public class SavingAccount implements Account {
+    private long id;
     private double balance;
     private final AccountType accountType;
-    private long id;
 
-    public SavingAccount(double balance, AccountType accountType) {
+    public SavingAccount(long id, double balance, AccountType accountType) {
+        this.id = id;
         this.balance = balance;
         this.accountType = accountType;
-    }
-
-    public SavingAccount(double balance) {
-        this(balance, AccountType.SAVING);
     }
 
     public AccountType getAccountType() {

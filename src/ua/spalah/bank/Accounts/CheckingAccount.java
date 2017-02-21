@@ -6,8 +6,8 @@ public class CheckingAccount extends SavingAccount {
 
     private double overdraft;
 
-    public CheckingAccount(double balance, double overdraft) {
-        super(balance, AccountType.CHECKING);
+    public CheckingAccount(long id, double balance, AccountType accountType, double overdraft) {
+        super(id, balance, accountType);
         this.overdraft = overdraft;
     }
 
