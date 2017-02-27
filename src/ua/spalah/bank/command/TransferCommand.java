@@ -3,6 +3,8 @@ package ua.spalah.bank.command;
 
 import ua.spalah.bank.Exceptions.ClientNotFoundException;
 import ua.spalah.bank.Exceptions.NotEnoughMoneyException;
+import ua.spalah.bank.IO.AbstractCommand;
+import ua.spalah.bank.IO.IO;
 import ua.spalah.bank.models.Account;
 import ua.spalah.bank.models.Client;
 import ua.spalah.bank.services.AccountService;
@@ -10,12 +12,13 @@ import ua.spalah.bank.services.ClientService;
 
 import java.util.Scanner;
 
-public class TransferCommand implements Command {
+public class TransferCommand extends AbstractCommand implements Command {
 
     private final AccountService accountService;
     private final ClientService clientService;
 
-    public TransferCommand(AccountService accountService, ClientService clientService) {
+    public TransferCommand(AccountService accountService, ClientService clientService, IO io) {
+        super(io);
         this.accountService = accountService;
         this.clientService = clientService;
     }
@@ -24,16 +27,16 @@ public class TransferCommand implements Command {
     public void execute() {
         Account activeAccount = BankCommander.currentClient.getActiveAccount();
         Scanner in = new Scanner(System.in);
-        System.out.println("Which client will have this money? Enter the name");
+        write("Which client will have this money? Enter the name");
         String name = in.nextLine();
 
         try {
             Client toClient = clientService.findClientByName(BankCommander.currentBank, name);
-            System.out.println("Enter transfer sum");
+            write("Enter transfer sum");
             double sum = in.nextDouble();
             accountService.transfer(activeAccount, toClient.getActiveAccount(), sum);
         } catch (ClientNotFoundException | NotEnoughMoneyException e) {
-            System.out.println(e.getMessage());
+            write(e.getMessage());
         }
     }
 

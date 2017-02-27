@@ -3,10 +3,8 @@ package ua.spalah.bank.services.impl;
 import ua.spalah.bank.Exceptions.ClientAlreadyExistsException;
 import ua.spalah.bank.Exceptions.ClientNotFoundException;
 import ua.spalah.bank.models.Account;
-import ua.spalah.bank.models.Bank;
 import ua.spalah.bank.models.Client;
 import ua.spalah.bank.services.ClientService;
-
 import java.util.Map;
 
 public class ClientServiceImpl implements ClientService {

@@ -1,7 +1,7 @@
 package ua.spalah.bank.IO;
 
 
-public class AbstractCommand {
+public class AbstractCommand{
 
     private final IO io;
 

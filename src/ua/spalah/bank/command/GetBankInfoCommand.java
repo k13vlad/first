@@ -1,18 +1,21 @@
 package ua.spalah.bank.command;
 
 
+import ua.spalah.bank.IO.AbstractCommand;
+import ua.spalah.bank.IO.IO;
 import ua.spalah.bank.services.BankReportService;
 
-public class GetBankInfoCommand implements Command{
+public class GetBankInfoCommand extends AbstractCommand implements Command{
 private final BankReportService bankReportService;
 
-    public GetBankInfoCommand(BankReportService bankReportService) {
+    public GetBankInfoCommand(BankReportService bankReportService, IO io) {
+        super(io);
         this.bankReportService = bankReportService;
     }
 
     @Override
     public void execute() {
-        System.out.println("Full info about this bank. \n " +
+        write("Full info about this bank. \n " +
                 "Number of clients: " + bankReportService.getNumberOfClients(BankCommander.currentBank) + "\n " +
                 "Number of accounts: " + bankReportService.getNumberOfAccounts(BankCommander.currentBank) + "\n" +
                 "Total account sum: " + bankReportService.getTotalAccountSum(BankCommander.currentBank) + "\n" +

@@ -13,7 +13,6 @@ public class SavingAccount implements Account {
         this.balance = balance;
         this.accountType = accountType;
     }
-
     public AccountType getAccountType() {
         return accountType;
     }

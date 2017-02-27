@@ -2,6 +2,8 @@ package ua.spalah.bank.command;
 
 import ua.spalah.bank.Exceptions.ClientAlreadyExistsException;
 import ua.spalah.bank.Gender;
+import ua.spalah.bank.IO.AbstractCommand;
+import ua.spalah.bank.IO.IO;
 import ua.spalah.bank.models.Client;
 import ua.spalah.bank.services.ClientService;
 
@@ -9,19 +11,20 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AddClientCommand implements Command {
+public class AddClientCommand extends AbstractCommand implements Command {
     private final ClientService clientService;
 
-    public AddClientCommand(ClientService clientService) {
+    public AddClientCommand(ClientService clientService, IO io) {
+        super(io);
         this.clientService = clientService;
     }
 
     @Override
     public void execute() {
-        System.out.println("Enter new client name");
+        write("Enter new client name");
         Scanner in = new Scanner(System.in);
         String name = in.nextLine();
-        System.out.println("Choose client's gender. Enter '1' if Male, '2' if Female");
+        write("Choose client's gender. Enter '1' if Male, '2' if Female");
         Gender gender = null;
         String gender1 = in.nextLine();
         int genderInt = Integer.parseInt(gender1);
@@ -31,26 +34,26 @@ public class AddClientCommand implements Command {
         } else {
             gender = Gender.Female;
         }
-        System.out.println("Enter user's e-mail");
+        write("Enter user's e-mail");
         String email = in.nextLine();
 
         while (!isCorrectEmail(email)) {
-            System.out.println("E-mail is incorrect.");
-            System.out.println("Enter correct user's email.");
+            write("E-mail is incorrect.");
+            write("Enter correct user's email.");
             email = in.nextLine();
         }
 
 
-        System.out.println("Enter user's phone number");
+        write("Enter user's phone number");
         String tel = in.nextLine();
 
         while (!isCorrectTel(tel)) {
-            System.out.println("Client's phone number is incorrect.");
-            System.out.println("Enter the correct number.");
+            write("Client's phone number is incorrect.");
+            write("Enter the correct number.");
             tel = in.nextLine();
         }
 
-        System.out.println("Enter user's city");
+        write("Enter user's city");
         String city = in.nextLine();
         try {
             clientService.saveClient(BankCommander.currentBank, new Client(name, gender, email, tel, city));
