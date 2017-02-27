@@ -6,16 +6,18 @@ import ua.spalah.bank.models.Account;
 
 import ua.spalah.bank.models.Client;
 
-import java.util.Map;
+import java.util.List;
 
 public interface ClientService {
     Client findClientByName(String name) throws ClientNotFoundException;
 
-    Map<String, Client> findAllClients();
+    List<Client> findAllClients();
 
     Client saveClient(Client client) throws ClientAlreadyExistsException;
 
     void deleteClient(Client client) throws ClientNotFoundException;
 
     void addAccount(Client client, Account account);
+    double getTotalBalance(Client client);
+
 }

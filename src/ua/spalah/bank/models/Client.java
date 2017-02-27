@@ -17,15 +17,24 @@ public class Client {
     private String city;
     private long id;
 
-    public Client(String name, Gender gender, Account activeAccount, ArrayList<Account> accounts, String email, String tel, String city, long id) {
+//    public Client(String name, Gender gender, Account activeAccount, ArrayList<Account> accounts, String email, String tel, String city, long id) {
+//        this.name = name;
+//        this.gender = gender;
+//        this.activeAccount = activeAccount;
+//        this.accounts = accounts;
+//        this.email = email;
+//        this.tel = tel;
+//        this.city = city;
+//        this.id = id;
+//    }
+
+
+    public Client(String name, Gender gender, String email, String tel, String city) {
         this.name = name;
         this.gender = gender;
-        this.activeAccount = activeAccount;
-        this.accounts = accounts;
         this.email = email;
         this.tel = tel;
         this.city = city;
-        this.id = id;
     }
 
     public Client(long id, String name, Gender gender, String email, String tel, String city) {

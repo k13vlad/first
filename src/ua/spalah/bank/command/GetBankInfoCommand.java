@@ -16,11 +16,11 @@ private final BankReportService bankReportService;
     @Override
     public void execute() {
         write("Full info about this bank. \n " +
-                "Number of clients: " + bankReportService.getNumberOfClients(BankCommander.currentBank) + "\n " +
-                "Number of accounts: " + bankReportService.getNumberOfAccounts(BankCommander.currentBank) + "\n" +
-                "Total account sum: " + bankReportService.getTotalAccountSum(BankCommander.currentBank) + "\n" +
-                "Bank credit sum: " + bankReportService.getBankCreditSum(BankCommander.currentBank) + "\n" +
-                "Clients sorted by name: " + bankReportService.getClientsSortedByName(BankCommander.currentBank) + "\n");
+                "Number of clients: " + bankReportService.getNumberOfClients() + "\n " +
+                "Number of accounts: " + bankReportService.getNumberOfAccounts() + "\n" +
+                "Total account sum: " + bankReportService.getTotalAccountSum() + "\n" +
+                "Bank credit sum: " + bankReportService.getBankCreditSum() + "\n" +
+                "Clients sorted by name: " + bankReportService.getClientsSortedByName() + "\n");
     }
 
     @Override

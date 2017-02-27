@@ -31,7 +31,7 @@ public class TransferCommand extends AbstractCommand implements Command {
         String name = in.nextLine();
 
         try {
-            Client toClient = clientService.findClientByName(BankCommander.currentBank, name);
+            Client toClient = clientService.findClientByName(name);
             write("Enter transfer sum");
             double sum = in.nextDouble();
             accountService.transfer(activeAccount, toClient.getActiveAccount(), sum);

@@ -23,10 +23,10 @@ public class AddClientCommand extends AbstractCommand implements Command {
     public void execute() {
         write("Enter new client name");
         Scanner in = new Scanner(System.in);
-        String name = in.nextLine();
+        String name = read();
         write("Choose client's gender. Enter '1' if Male, '2' if Female");
         Gender gender = null;
-        String gender1 = in.nextLine();
+        String gender1 = read();
         int genderInt = Integer.parseInt(gender1);
 
         if (genderInt == 1) {
@@ -35,28 +35,28 @@ public class AddClientCommand extends AbstractCommand implements Command {
             gender = Gender.Female;
         }
         write("Enter user's e-mail");
-        String email = in.nextLine();
+        String email = read();
 
         while (!isCorrectEmail(email)) {
             write("E-mail is incorrect.");
             write("Enter correct user's email.");
-            email = in.nextLine();
+            email = read();
         }
 
 
         write("Enter user's phone number");
-        String tel = in.nextLine();
+        String tel = read();
 
         while (!isCorrectTel(tel)) {
             write("Client's phone number is incorrect.");
             write("Enter the correct number.");
-            tel = in.nextLine();
+            tel = read();
         }
 
         write("Enter user's city");
-        String city = in.nextLine();
+        String city = read();
         try {
-            clientService.saveClient(BankCommander.currentBank, new Client(name, gender, email, tel, city));
+            clientService.saveClient(new Client(name, gender, email, tel, city));
         } catch (ClientAlreadyExistsException e) {
             e.getMessage();
         }

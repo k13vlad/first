@@ -1,18 +1,24 @@
 package ua.spalah.bank.services.impl;
 
+import ua.spalah.bank.DAO.AccountDAO;
+import ua.spalah.bank.DAO.ClientDAO;
 import ua.spalah.bank.Exceptions.ClientAlreadyExistsException;
 import ua.spalah.bank.Exceptions.ClientNotFoundException;
 import ua.spalah.bank.models.Account;
 import ua.spalah.bank.models.Client;
 import ua.spalah.bank.services.ClientService;
+
+import java.util.List;
 import java.util.Map;
 
 public class ClientServiceImpl implements ClientService {
 
 
+    private ClientDAO clientDAO;
+
     @Override
     public Client findClientByName(String name) throws ClientNotFoundException {
-        Client client = getClients().get(name);
+        Client client = clientDAO.findByName(name);
         if (client.getName().equalsIgnoreCase(name)) {
             return client;
         }
@@ -20,15 +26,14 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Map<String, Client> findAllClients() {
-        return getClients();
+    public List<Client> findAllClients() {
+        return clientDAO.findAll();
     }
 
     @Override
     public Client saveClient(Client client) throws ClientAlreadyExistsException {
-        if (!getClients().containsKey(client.getName())) {
-            getClients().put(client.getName(), client);
-            return client;
+        if (!clientDAO.findAll().contains(client.getName())) {
+            return clientDAO.saveOrUpdate(client);
         } else {
             throw new ClientAlreadyExistsException(client.getName());
         }
@@ -36,19 +41,11 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void deleteClient(Client client) throws ClientNotFoundException {
-        if (getClients().containsKey(client.getName())) {
-            getClients().remove(client.getName());
-        } else {
+        if (clientDAO.findAll().contains(client)) {
+            clientDAO.delete(client.getId());
+        } else{
             throw new ClientNotFoundException(client.getName());
         }
-    }
-
-    public double getTotalBalance(Client client) {
-        double totalBalance = 0;
-        for (Account account : client.getAccounts()) {
-            totalBalance += client.getTotalBalance();
-        }
-        return totalBalance;
     }
 
     public void addAccount(Client client, Account account) {
@@ -57,6 +54,15 @@ public class ClientServiceImpl implements ClientService {
             client.setActiveAccount(account);
         }
         client.getAccounts().add(account);
+    }
+
+    @Override
+    public double getTotalBalance(Client client) {
+        double totalBalance = 0;
+        for (Account account : client.getAccounts()) {
+            totalBalance += client.getTotalBalance();
+        }
+        return totalBalance;
     }
 
 

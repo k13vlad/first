@@ -39,7 +39,6 @@ public class BankCommander {
     }
 
     public BankCommander(SocketIO socketIO) {
-
         init();
     }
 
@@ -98,14 +97,14 @@ public class BankCommander {
 //            currentBank = bank;
 
             this.commands = new Command[]{
-                    new FindClientCommand(clientService, ConsoleIO),
-                    new GetAccountsCommand(clientService, ConsoleIO),
-                    new SelectActiveAccountCommand(ClientService, ConsoleIO),
+                    new FindClientCommand(clientService, io),
+                    new GetAccountsCommand(io, clientService),
+                    new SelectActiveAccountCommand(io, clientService),
                     new DepositCommand(accountService, ConsoleIO),
                     new WithdrawCommand(accountService, ConsoleIO),
                     new TransferCommand(accountService, clientService, ConsoleIO),
                     new AddClientCommand(clientService, ConsoleIO),
-                    new AddAccountCommand(clientService, AccountService,  ConsoleIO),
+                    new AddAccountCommand(clientService, accountService, io),
                     new RemoveClientCommand(clientService, ConsoleIO),
                     new GetBankInfoCommand(bankReportService, ConsoleIO),
                     new ExitCommand()
