@@ -13,6 +13,11 @@ public class SavingAccount implements Account {
         this.balance = balance;
         this.accountType = accountType;
     }
+
+    public SavingAccount(double balance) {
+        this.balance = balance;
+    }
+
     public AccountType getAccountType() {
         return accountType;
     }

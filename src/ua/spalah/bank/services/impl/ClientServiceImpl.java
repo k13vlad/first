@@ -15,6 +15,7 @@ public class ClientServiceImpl implements ClientService {
 
 
     private ClientDAO clientDAO;
+    private AccountDAO accountDao;
 
     @Override
     public Client findClientByName(String name) throws ClientNotFoundException {
@@ -63,6 +64,15 @@ public class ClientServiceImpl implements ClientService {
             totalBalance += client.getTotalBalance();
         }
         return totalBalance;
+    }
+
+    @Override
+    public void getAccountsInfo(Client client) {
+        List<Account> accounts = accountDao.findByClientId(client.getId());
+        for (int i = 0; i < accounts.size(); i++) {
+            String isActive = client.getActiveAccount().getId() == accounts.get(i).getId() ? ", *active account*" : "";
+            System.out.println("[" + (i + 1) + "] " + accounts.get(i).toString() + isActive);
+        }
     }
 
 

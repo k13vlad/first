@@ -25,15 +25,13 @@ public class AddAccountCommand extends AbstractCommand implements Command {
     @Override
     public void execute() {
         if (BankCommander.currentClient == null) {
-            write("You did not choose client");
+            write("You didn't choose client");
         } else {
 
             write("Choose account type. \n Saving account, press: 1 \n Checking account, press: 2");
-            Scanner in = new Scanner(System.in);
-
-            int accountTypeInt = in.nextInt();
+            int accountTypeInt = Integer.parseInt(read());
             write("Enter start balance ");
-            double balance = in.nextDouble();
+            double balance = Double.parseDouble(read());
 
             Account account = null;
             boolean correctType = false;
@@ -47,7 +45,7 @@ public class AddAccountCommand extends AbstractCommand implements Command {
                 case 2: {
                     correctType = true;
                     write("Enter the overdraft for your account");
-                    double overdraft = in.nextDouble();
+                    double overdraft = Double.parseDouble(read());
                     account = new CheckingAccount(balance, overdraft);
                     break;
                 }
@@ -60,7 +58,7 @@ public class AddAccountCommand extends AbstractCommand implements Command {
                     BankCommander.currentClient.setActiveAccount(account);
                 } else {
                     write("Do you want to do this account active? \n If yes, enter: 1 \n No, enter: 2");
-                    if ((in.nextInt() == 1)) {
+                    if ((Integer.parseInt(read()) == 1)) {
                         BankCommander.currentClient.setActiveAccount(account);
                     }
                 }

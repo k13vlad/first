@@ -8,12 +8,9 @@ import ua.spalah.bank.command.BankCommander;
 import ua.spalah.bank.models.Account;
 import ua.spalah.bank.services.AccountType;
 
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.reflect.Modifier.PUBLIC;
 
 public class AccountDAOImpl implements AccountDAO {
 

@@ -8,7 +8,7 @@ import ua.spalah.bank.services.ClientService;
 
 import java.util.ArrayList;
 
-public class GetAccountsCommand extends AbstractCommand implements Command{
+public class GetAccountsCommand extends AbstractCommand implements Command {
 
     public final ClientService clientService;
 
@@ -19,9 +19,11 @@ public class GetAccountsCommand extends AbstractCommand implements Command{
 
     @Override
     public void execute() {
-        ArrayList<Account> accounts = BankCommander.currentClient.getAccounts();
-        Account activeAccount = BankCommander.currentClient.getActiveAccount();
-        write("Accounts of this client: " + accounts + "\n" + "Active account: " + activeAccount);
+        if (BankCommander.currentClient == null) {
+            write("You didn't choose client.");
+        } else {
+            clientService.getAccountsInfo(BankCommander.currentClient);
+        }
     }
 
     @Override

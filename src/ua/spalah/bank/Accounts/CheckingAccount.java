@@ -11,6 +11,11 @@ public class CheckingAccount extends SavingAccount {
         this.overdraft = overdraft;
     }
 
+    public CheckingAccount(double balance, double overdraft) {
+        super(balance);
+        this.overdraft = overdraft;
+    }
+
     public double getOverdraft() {
         return overdraft;
     }
