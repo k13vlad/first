@@ -1,4 +1,4 @@
-package bank_application;
+package ua.spalah.bank;
 
 
 public enum Gender {
